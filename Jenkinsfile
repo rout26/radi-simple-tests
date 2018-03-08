@@ -12,7 +12,7 @@ node {
    // Mark the code build 'stage'....
    stage 'Build'
    // Run the maven build
-   //bat "${mvnHome}/bin/mvn clean test"
+   bat "${mvnHome}/bin/mvn clean test"
    
    stage('Results') 
    junit '**/target/surefire-reports/TEST-*.xml'
