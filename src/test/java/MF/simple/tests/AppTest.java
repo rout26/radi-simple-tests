@@ -44,4 +44,9 @@ public class AppTest extends TestCase
     {
         assertTrue( true );
     }
+
+    public void testAlwaysFail()
+    {
+        assertTrue( true );
+    }
 }
