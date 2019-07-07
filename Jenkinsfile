@@ -1,47 +1,24 @@
-node { 
-	// Mark the code checkout 'stage'....
-   stage 'Checkout'
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            checkout scm
 
-   // Checkout code from repository
-   checkout scm
+            def mvnHome = tool 'M3'
+        }
+        stage('Build') {
 
-   // Get the maven tool.
-   // ** NOTE: This 'M3' maven tool must be configured
-   // **       in the global configuration.
-   def mvnHome = tool 'M3'
-   // Mark the code build 'stage'....
-   stage 'Build'
-   // Run the maven build
-   bat "${mvnHome}/bin/mvn clean test"
-   
-   stage('Results') 
-   junit '**/target/surefire-reports/TEST-*.xml'
-   archive 'target/*.jar'
-   
-   
-   
-    //try{
-	//	  stage('Build') {
-	//		 bat "${mvnHome}/bin/mvn clean test"
-	//	  }
-	//	   }catch(err){
-	//		   junit '**/target/surefire-reports/TEST-*.xml'
-	//	  stage('Results') {
-	//		  junit '**/target/surefire-reports/TEST-*.xml'
-	//		  archive 'target/*.jar'
-    // }
-	//}
-   
 
-   
-   
-   
-   
+            steps {
+                bat "${mvnHome}/bin/mvn clean test"
+            }
+        }
+    }
 
-     
-
-	 
-    
-    //stage 'publish'
-    //bat 'make publish'
+    post {
+            always {
+                echo 'I will always say Hello again!'
+                junit '**/target/surefire-reports/TEST-*.xml'
+            }
+        }
 }
