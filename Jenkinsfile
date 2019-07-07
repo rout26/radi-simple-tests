@@ -7,7 +7,7 @@ pipeline {
 
 
             steps {
-                bat(/mvn -Dthrow=false  clean test/)
+                bat(/mvn -Dthrow=true  clean test/)
 
             }
         }
