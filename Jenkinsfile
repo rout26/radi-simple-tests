@@ -8,7 +8,7 @@ pipeline {
 
             steps {
                 mvn('clean install')
-                junit '**/target/surefire-reports/TEST-*.xml'
+
             }
         }
     }
