@@ -7,7 +7,7 @@ pipeline {
 
 
             steps {
-                mvn('clean install')
+                bat(/"mvn" -Dthrow=true  clean test/)
 
             }
         }
