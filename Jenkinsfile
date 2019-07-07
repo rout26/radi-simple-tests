@@ -1,16 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
-            checkout scm
 
-            def mvnHome = tool 'M3'
-        }
-        stage('Build') {
+        stage('unit-test') {
 
 
             steps {
-                bat "${mvnHome}/bin/mvn clean test"
+                mvn('clean install')
             }
         }
     }
