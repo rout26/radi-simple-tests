@@ -16,6 +16,7 @@ pipeline {
     post {
             always {
                 echo 'I will always say Hello again!'
+                junit '**/target/surefire-reports/TEST-*.xml'
             }
         }
 
