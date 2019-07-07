@@ -1,4 +1,5 @@
 pipeline {
+
     agent any
     stages {
 
@@ -7,14 +8,9 @@ pipeline {
 
             steps {
                 mvn('clean install')
+                junit '**/target/surefire-reports/TEST-*.xml'
             }
         }
     }
 
-    post {
-            always {
-                echo 'I will always say Hello again!'
-                junit '**/target/surefire-reports/TEST-*.xml'
-            }
-        }
 }
