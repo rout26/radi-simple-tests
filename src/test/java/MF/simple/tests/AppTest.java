@@ -28,10 +28,12 @@ public class AppTest extends TestCase {
      * Rigourous Test :-)
      */
     public void testAppA() {
+        System.out.print("AppTest.testAppA");
         assertTrue(true);
     }
 
     public void testAppB() {
+        System.out.print("AppTest.testAppB");
         assertTrue(true);
     }
 
