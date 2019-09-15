@@ -7,7 +7,7 @@ pipeline {
 
 
             steps {
-                bat(/mvn -Dthrow=false  clean test -Dfail=true -Dthrow=false/)
+                bat(/mvn -Dthrow=false  clean test -fn -Dfail=true  -Dthrow=false/)
                 junit '**/target/surefire-reports/TEST-*.xml'
 
             }
