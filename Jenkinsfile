@@ -7,17 +7,13 @@ pipeline {
 
 
             steps {
-                bat(/mvn -Dthrow=false  clean test -Dfail=true -Dthrow=true/)
+                bat(/mvn -Dthrow=false  clean test -Dfail=true -Dthrow=false/)
+                junit '**/target/surefire-reports/TEST-*.xml'
 
             }
         }
     }
 
-    post {
-            always {
-                echo 'I will always say Hello again!'
-                junit '**/target/surefire-reports/TEST-*.xml'
-            }
-        }
+
 
 }
