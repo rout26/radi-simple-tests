@@ -4,11 +4,8 @@ pipeline {
     stages {
 
         stage('unit-test') {
-
-
             steps {
-                bat(/mvn -Dthrow=false  clean test/)
-
+                bat(/mvn -Dthrow=false -fn clean test/)
             }
         }
     }

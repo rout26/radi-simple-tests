@@ -41,17 +41,25 @@ public class AppTest extends TestCase {
         assertTrue(true);
     }
 
-    public void testWillFailOnFailParameter() {
+    public void testWillFailOnParameter() {
         String value = System.getProperty("fail");
         if (value != null && value.toLowerCase().equals("true")) {
             fail("fail parameter is set");
         }
     }
 
-    public void testWillThrowOnThrowParameter() {
+    public void testWillThrowOnParameter() {
         String value = System.getProperty("throw");
         if (value != null && value.toLowerCase().equals("true")) {
             throw new RuntimeException("Throw parameter is set");
+        }
+    }
+
+    public void testWillSleepOnParameter() throws InterruptedException {
+        String value = System.getProperty("sleep");
+        if (value != null) {
+            long sleepMs = Long.parseLong(value);
+            Thread.sleep(sleepMs);
         }
     }
 }
